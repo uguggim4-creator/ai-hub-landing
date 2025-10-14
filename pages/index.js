@@ -21,7 +21,7 @@ export default function Home() {
     // 1. 타이틀 이미지 퇴장 타이머 (0.5초 후 퇴장 애니메이션 시작)
     const exitTimer = setTimeout(() => {
       setShowTitleImage(false);
-    }, 1000); // 0.5초(500ms)로 설정
+    }, 750); // 0.5초(500ms)로 설정
 
     // 2. 메인 콘텐츠 등장 타이머 (총 1.5초 지연)
     // (퇴장 시작 0.5초) + (퇴장 지속시간 1초) = 1.5초, 즉 타이틀 사라지는 즉시 메인 콘텐츠 등장
@@ -66,7 +66,7 @@ export default function Home() {
     // 1. ainspire 홈페이지 박스
     {
       title: "ainspire 홈페이지",
-      desc: "Ainspire 홈페이지에서 강의 정보와<br />다양한 혜택을 확인하세요:)",
+      desc: "Ainspire 홈페이지에서 강의 정보와<br />다양한 혜택을 확인하세요 :)",
       url: toolUrls.homepage,
       color: "text-yellow-400",
       hoverColor: "hover:border-yellow-500",
@@ -96,7 +96,7 @@ export default function Home() {
     // 4. 레퍼런스 수집기
     {
       title: "레퍼런스 수집기",
-      desc: "영감을 줄 레퍼런스를<br />효율적으로 찾아 관리합니다.",
+      desc: "레퍼런스 영상에서<br />자동으로 이미지를 캡쳐해줍니다.",
       url: toolUrls.referenceCollector,
       color: "text-purple-400",
       hoverColor: "hover:border-purple-500",
