@@ -13,7 +13,7 @@ export default function Home() {
     storyboard: "https://your-storyboard-tool-url.vercel.app/", // 🚨 실제 주소로 변경 필요
     imageTool: "https://ainspire-image-tool-api.vercel.app/",
     referenceCollector: "https://your-reference-collector-url.vercel.app/", // 🚨 실제 주소로 변경 필요
-    promptGenerator: "https://ainspireveo3-prompt-generator.vercel.app/",
+    promptGenerator: "https://vercel-veo3-prompt-generator.vercel.app/",
   };
 
   // 상태 관리: 타이틀 이미지 퇴장과 메인 콘텐츠 등장을 분리하여 제어
