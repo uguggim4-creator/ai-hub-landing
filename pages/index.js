@@ -21,7 +21,7 @@ export default function Home() {
     // 1. 타이틀 이미지 퇴장 타이머 (0.5초 후 퇴장 애니메이션 시작)
     const exitTimer = setTimeout(() => {
       setShowTitleImage(false);
-    }, 500); // 0.5초(500ms)로 설정
+    }, 1500); // 0.5초(500ms)로 설정
 
     // 2. 메인 콘텐츠 등장 타이머 (총 1.5초 지연)
     // (퇴장 시작 0.5초) + (퇴장 지속시간 1초) = 1.5초, 즉 타이틀 사라지는 즉시 메인 콘텐츠 등장
@@ -50,7 +50,7 @@ export default function Home() {
       opacity: 1,
       y: 0, // 원래 위치로 올라옴
       transition: {
-        staggerChildren: 0.1, // 내부 박스들을 0.1초 간격으로 순차 등장
+        staggerChildren: 0, // 내부 박스들을 0.1초 간격으로 순차 등장
         duration: 0.5, // 컨테이너가 올라오는 속도
       },
     },
