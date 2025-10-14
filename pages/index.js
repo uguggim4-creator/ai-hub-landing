@@ -1,4 +1,4 @@
-// pages/index.js 파일 내용 - 최종 전체 버전 (1.5초 지연 및 모션 복구 완료)
+// pages/index.js 파일 내용 - 최종 전체 버전 (메인 콘텐츠 등장 모션 추가 및 복구 완료)
 
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,13 +21,13 @@ export default function Home() {
     // 1. 타이틀 이미지 퇴장 타이머 (0.5초 후 퇴장 애니메이션 시작)
     const exitTimer = setTimeout(() => {
       setShowTitleImage(false);
-    }, 100); // 
+    }, 500); // 0.5초(500ms)로 설정
 
     // 2. 메인 콘텐츠 등장 타이머 (총 1.5초 지연)
-    // 1.5초 지연 (퇴장 시작 0.5초 + 퇴장 지속시간 1초)
+    // (퇴장 시작 0.5초) + (퇴장 지속시간 1초) = 1.5초, 즉 타이틀 사라지는 즉시 메인 콘텐츠 등장
     const mainContentTimer = setTimeout(() => {
         setShowMainContent(true);
-    }, 1500); // 🚨 1.5초(1500ms)로 설정
+    }, 1500); // 1.5초(1500ms)로 설정
 
     // 3. 정리 함수
     return () => {
@@ -36,25 +36,28 @@ export default function Home() {
     };
   }, []);
 
-  // Framer Motion Variants (애니메이션 정의)
+  // Framer Motion Variants
   const titleImageVariants = {
     initial: { opacity: 0, y: 300 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -300 },
   };
 
+  // 🚨🚨🚨 메인 콘텐츠 전체가 아래에서 위로 올라오는 모션 추가 🚨🚨🚨
   const mainContentVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 50 }, // 아래에서 50px 위치에서 시작
     visible: {
       opacity: 1,
+      y: 0, // 원래 위치로 올라옴
       transition: {
-        staggerChildren: 0, // 박스들이 0.1초 간격으로 순차 등장
+        staggerChildren: 0.1, // 내부 박스들을 0.1초 간격으로 순차 등장
+        duration: 0.5, // 컨테이너가 올라오는 속도
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 }, // 아래에서 50px 위치에서 등장 시작
+    hidden: { opacity: 0, y: 50 }, // 개별 박스는 아래에서 등장
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 12 } }, // 위로 튕기며 등장
   };
 
@@ -126,7 +129,6 @@ export default function Home() {
         <title>AInspire 통합 허브</title>
       </Head>
 
-      {/* 타이틀 등장/퇴장 모션 영역 */}
       <AnimatePresence>
         {showTitleImage && (
           <motion.div
@@ -147,14 +149,13 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* 메인 콘텐츠: showMainContent가 true일 때만 나타납니다. */}
       {showMainContent && (
         <motion.main
           className="text-center w-full max-w-7xl bg-black bg-opacity-70 rounded-lg p-8 shadow-2xl relative z-0"
-          variants={mainContentVariants}
+          variants={mainContentVariants} // 👈 컨테이너 모션 적용
           initial="hidden"
           animate="visible"
-          transition={{ delay: 0 }} // 🚨 delay 0으로 설정하여 즉시 내부 모션 실행
+          transition={{ delay: 0 }} // 👈 즉시 내부 모션 실행
         >
           {/* 노란색 타이틀 + Pretendard 폰트 */}
           <h1 className="text-5xl font-extrabold mb-8 text-yellow-400 font-pretendard">
@@ -168,7 +169,7 @@ export default function Home() {
             당신의 워크플로우를 혁신할 강력한 AI 도구들을 지금 바로 경험하세요.
           </motion.p>
 
-          {/* 🚨🚨 유연한 레이아웃: motion.div에 variants를 주어 모션 복구 🚨🚨 */}
+          {/* 🚨🚨🚨 모션 복구 및 유연한 레이아웃 컨테이너 🚨🚨🚨 */}
           <motion.div 
               className="grid gap-8" 
               style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
@@ -181,7 +182,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`block p-8 border border-gray-700 rounded-xl shadow-2xl bg-gray-800 ${box.hoverColor} transition duration-300 transform hover:scale-[1.05]`}
-                variants={itemVariants} // 👈 개별 박스 모션
+                variants={itemVariants} // 👈 개별 박스 모션 (아래에서 튀어 오름)
               >
                 {/* 제목 및 무료/공식 태그 */}
                 <div className="flex flex-col items-center mb-3">
