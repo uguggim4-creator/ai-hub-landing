@@ -10,9 +10,9 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   // 실제 Vercel 배포 주소로 설정된 상태입니다.
   const toolUrls = {
-    storyboard: "https://your-storyboard-tool-url.vercel.app/", // 🚨 실제 주소로 변경 필요
+    storyboard: "https://ainspire-storyboard.vercel.app/", // 🚨 실제 주소로 변경 필요
     imageTool: "https://ainspire-image-tool-api.vercel.app/",
-    referenceCollector: "https://your-reference-collector-url.vercel.app/", // 🚨 실제 주소로 변경 필요
+    referenceCollector: "https://ainspire-reference.vercel.app/", // 🚨 실제 주소로 변경 필요
     promptGenerator: "https://vercel-veo3-prompt-generator.vercel.app/",
   };
 
