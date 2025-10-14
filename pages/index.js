@@ -66,7 +66,7 @@ export default function Home() {
     // 1. ainspire 홈페이지 박스
     {
       title: "ainspire 홈페이지",
-      desc: "저희 회사의 최신 정보와 비전을<br />확인하실 수 있습니다.",
+      desc: "Ainspire 홈페이지에서 강의 정보와<br />다양한 혜택을 확인하세요:)",
       url: toolUrls.homepage,
       color: "text-yellow-400",
       hoverColor: "hover:border-yellow-500",
@@ -105,8 +105,8 @@ export default function Home() {
     },
     // 5. 프롬프트 생성기
     {
-      title: "프롬프트 생성기",
-      desc: "AI에게 최적의 지시를 내릴 수 있는<br />프롬프트를 자동으로 만듭니다.",
+      title: "VEO3 프롬프트 생성기",
+      desc: "VEO3 전용 고도화된<br />JSON 프롬프트를 자동으로 만듭니다.",
       url: toolUrls.promptGenerator,
       color: "text-cyan-400",
       hoverColor: "hover:border-cyan-500",
