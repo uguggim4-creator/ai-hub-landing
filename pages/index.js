@@ -50,8 +50,8 @@ export default function Home() {
       opacity: 1,
       y: 0, // 원래 위치로 올라옴
       transition: {
-        staggerChildren: 0, // 내부 박스들을 0.1초 간격으로 순차 등장
-        duration: 0.5, // 컨테이너가 올라오는 속도
+        staggerChildren: 0, // 내부 박스들을 0초 간격으로 순차 등장
+        duration: 0, // 컨테이너가 올라오는 속도
       },
     },
   };
