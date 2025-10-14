@@ -1,4 +1,4 @@
-// pages/index.js 파일 내용 - 최종 수정본 (줄 바꿈 및 모션 복구 완료)
+// pages/index.js 파일 내용 - 최종 전체 버전 (모션 복구 완료)
 
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,7 +11,7 @@ export default function Home() {
     imageTool: "https://ainspire-image-tool-api.vercel.app/",
     referenceCollector: "https://ainspire-reference.vercel.app/",
     promptGenerator: "https://vercel-veo3-prompt-generator.vercel.app/",
-    homepage: "https://ainspire.co.kr",
+    homepage: "https://ainspire.co.kr", // ainspire 홈페이지 주소
   };
 
   const [showTitleImage, setShowTitleImage] = useState(true);
@@ -21,13 +21,12 @@ export default function Home() {
     // 1. 타이틀 이미지 퇴장 타이머 (1초 후 퇴장 애니메이션 시작)
     const exitTimer = setTimeout(() => {
       setShowTitleImage(false);
-    }, 1000);
+    }, 1000); // 1초(1000ms) 후 실행
 
-    // 2. 메인 콘텐츠 등장 타이머 (총 2.5초 지연)
-    // 2.5초 지연 (타이틀 퇴장 완료 시점 2초 + 0.5초 대기)
+    // 2. 메인 콘텐츠 등장 타이머 (총 2.5초 지연: 타이틀 퇴장 완료 시점 2초 + 0.5초 대기)
     const mainContentTimer = setTimeout(() => {
         setShowMainContent(true);
-    }, 2500);
+    }, 2500); // 2.5초(2500ms) 후 실행
 
     // 3. 정리 함수
     return () => {
@@ -48,57 +47,62 @@ export default function Home() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // 카드 등장 간격
+        staggerChildren: 0.1, // 박스들이 0.1초 간격으로 순차 등장
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 12 } },
+    hidden: { opacity: 0, y: 50 }, // 아래에서 등장
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 12 } }, // 튕기는 모션
   };
 
   // 5개 도구 박스를 배열로 정의 (줄 바꿈 <br /> 태그 포함)
   const toolBoxes = [
+    // 1. ainspire 홈페이지 박스
     {
       title: "ainspire 홈페이지",
-      desc: "저희 회사의 최신 정보와 비전을<br />확인하실 수 있습니다.", // 👈 줄 바꿈 적용
+      desc: "저희 회사의 최신 정보와 비전을<br />확인하실 수 있습니다.",
       url: toolUrls.homepage,
       color: "text-yellow-400",
       hoverColor: "hover:border-yellow-500",
       tag: "공식",
       tagColor: "text-yellow-500",
     },
+    // 2. 스토리보드
     {
       title: "스토리보드",
-      desc: "아이디어를 시각화하고<br />스토리를 구성하는 데 도움을 줍니다.", // 👈 줄 바꿈 적용
+      desc: "아이디어를 시각화하고<br />스토리를 구성하는 데 도움을 줍니다.",
       url: toolUrls.storyboard,
       color: "text-green-400",
       hoverColor: "hover:border-green-500",
       tag: "무료",
       tagColor: "text-green-500",
     },
+    // 3. 이미지 툴
     {
       title: "이미지 툴",
-      desc: "간단한 프롬프트만으로<br />놀라운 고품질 이미지를 생성합니다.", // 👈 줄 바꿈 적용
+      desc: "간단한 프롬프트만으로<br />놀라운 고품질 이미지를 생성합니다.",
       url: toolUrls.imageTool,
       color: "text-blue-400",
       hoverColor: "hover:border-blue-500",
       tag: "무료",
       tagColor: "text-blue-500",
     },
+    // 4. 레퍼런스 수집기
     {
       title: "레퍼런스 수집기",
-      desc: "영감을 줄 레퍼런스를<br />효율적으로 찾아 관리합니다.", // 👈 줄 바꿈 적용
+      desc: "영감을 줄 레퍼런스를<br />효율적으로 찾아 관리합니다.",
       url: toolUrls.referenceCollector,
       color: "text-purple-400",
       hoverColor: "hover:border-purple-500",
       tag: "무료",
       tagColor: "text-purple-500",
     },
+    // 5. 프롬프트 생성기
     {
       title: "프롬프트 생성기",
-      desc: "AI에게 최적의 지시를 내릴 수 있는<br />프롬프트를 자동으로 만듭니다.", // 👈 줄 바꿈 적용
+      desc: "AI에게 최적의 지시를 내릴 수 있는<br />프롬프트를 자동으로 만듭니다.",
       url: toolUrls.promptGenerator,
       color: "text-cyan-400",
       hoverColor: "hover:border-cyan-500",
@@ -147,7 +151,7 @@ export default function Home() {
           variants={mainContentVariants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 0 }} // 🚨🚨🚨 모션 복구: delay를 0으로 설정하여 즉시 내부 staggerChildren을 실행
+          transition={{ delay: 0 }} // 0.1초로 설정하면 등장 후 딜레이가 생기므로 0으로 유지합니다.
         >
           {/* 노란색 타이틀 + Pretendard 폰트 */}
           <h1 className="text-5xl font-extrabold mb-8 text-yellow-400 font-pretendard">
@@ -161,9 +165,12 @@ export default function Home() {
             당신의 워크플로우를 혁신할 강력한 AI 도구들을 지금 바로 경험하세요.
           </motion.p>
 
-          {/* 유연한 레이아웃: gridTemplateColumns 인라인 스타일 적용 */}
-          <div className="grid gap-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-
+          {/* 🚨🚨🚨 모션 복구: 일반 div를 motion.div로 변경하고 variants를 추가합니다. 🚨🚨🚨 */}
+          <motion.div 
+              className="grid gap-8" 
+              style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
+              variants={mainContentVariants} // 👈 모션 상속을 위해 variants를 추가
+          >
             {toolBoxes.map((box, index) => (
               <motion.a
                 key={box.title}
@@ -176,7 +183,7 @@ export default function Home() {
                 {/* 제목 및 무료/공식 태그 */}
                 <div className="flex flex-col items-center mb-3">
                   {/* 태그 (메인 텍스트 위에 위치) */}
-                  <span className={`text-sm font-semibold px-2 py-1 rounded-full border border-current ${box.tagColor} font-pretendard mb-2`}>
+                  <span className={`text-sm font-semibold px-2 py-1 rounded-full border border-current ${box.tagColor} font-pretendard mb-4`}> 
                     {box.tag}
                   </span>
                   {/* 제목 (중앙 정렬) */}
@@ -185,11 +192,10 @@ export default function Home() {
                   </h2>
                 </div>
                 
-                {/* 설명 (중앙 정렬) */}
+                {/* 설명 (중앙 정렬 및 줄 바꿈 적용) */}
                 <p 
                   className="text-gray-400 mb-6 font-pretendard text-center"
-                  // 🚨🚨🚨 줄 바꿈(<br />) 태그를 인식하도록 설정 (핵심 수정)
-                  dangerouslySetInnerHTML={{ __html: box.desc }}
+                  dangerouslySetInnerHTML={{ __html: box.desc }} // 줄 바꿈을 위해 사용
                 />
                 
                 {/* 링크 (중앙 정렬) */}
@@ -199,7 +205,7 @@ export default function Home() {
               </motion.a>
             ))}
 
-          </div>
+          </motion.div>
         </motion.main>
       )}
     </div>
