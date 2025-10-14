@@ -27,7 +27,7 @@ export default function Home() {
     // 퇴장 시작(1초) + 퇴장 지속시간(1초) + 추가 대기 시간(0.5초) = 총 2.5초
     const mainContentTimer = setTimeout(() => {
         setShowMainContent(true);
-    }, 2500); // 2.5초(2500ms) 후 실행 (시간을 2.5초로 조정하여 빨리 나타나지 않도록 수정했습니다)
+    }, 1500); // 1.5초(1500ms) 후 실행 (시간을 2.5초로 조정하여 빨리 나타나지 않도록 수정했습니다)
 
     // 3. 정리 함수: 타이머를 깔끔하게 해제
     return () => {
