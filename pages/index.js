@@ -10,7 +10,7 @@ export default function Home() {
     storyboard: "https://ainspire-storyboard.vercel.app/",
     imageTool: "https://ainspire-image-tool-api.vercel.app/",
     referenceCollector: "https://ainspire-reference.vercel.app/",
-    promptGenerator: "https://vercel-veo3-prompt-generator.vercel.app/",
+    promptGenerator: "https://ainspire-veo3-1-prompt-generator.vercel.app/",
     homepage: "https://ainspire.co.kr", // ainspire 홈페이지 주소
   };
 
