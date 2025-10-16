@@ -80,7 +80,7 @@ export default function Home() {
       url: toolUrls.storyboard,
       color: "text-green-400",
       hoverColor: "hover:border-green-500",
-      tag: "무료",
+      tag: "멤버십/수강생",
       tagColor: "text-green-500",
     },
     // 3. 이미지 툴
@@ -90,7 +90,7 @@ export default function Home() {
       url: toolUrls.imageTool,
       color: "text-blue-400",
       hoverColor: "hover:border-blue-500",
-      tag: "무료",
+      tag: "멤버십/수강생",
       tagColor: "text-blue-500",
     },
     // 4. 레퍼런스 수집기
@@ -100,7 +100,7 @@ export default function Home() {
       url: toolUrls.referenceCollector,
       color: "text-purple-400",
       hoverColor: "hover:border-purple-500",
-      tag: "무료",
+      tag: "멤버십/수강생",
       tagColor: "text-purple-500",
     },
     // 5. 프롬프트 생성기
@@ -110,7 +110,7 @@ export default function Home() {
       url: toolUrls.promptGenerator,
       color: "text-cyan-400",
       hoverColor: "hover:border-cyan-500",
-      tag: "무료",
+      tag: "멤버십/수강생",
       tagColor: "text-cyan-500",
     },
   ];
@@ -184,7 +184,7 @@ export default function Home() {
                 className={`block p-8 border border-gray-700 rounded-xl shadow-2xl bg-gray-800 ${box.hoverColor} transition duration-300 transform hover:scale-[1.05]`}
                 variants={itemVariants} // 👈 개별 박스 모션 (아래에서 튀어 오름)
               >
-                {/* 제목 및 무료/공식 태그 */}
+                {/* 제목 및 멤버십/수강생/공식 태그 */}
                 <div className="flex flex-col items-center mb-3">
                   {/* 태그 (메인 텍스트 위에 위치, 간격 mb-4) */}
                   <span className={`text-sm font-semibold px-2 py-1 rounded-full border border-current ${box.tagColor} font-pretendard mb-4`}> 
