@@ -105,8 +105,8 @@ export default function Home() {
     },
     // 5. 프롬프트 생성기
     {
-      title: "VEO3 프롬프트 생성기",
-      desc: "VEO3 전용 고도화된<br />JSON 프롬프트를 자동으로 만듭니다.",
+      title: "VEO3.1 프롬프트 생성기",
+      desc: "VEO3.1 전용 고도화된<br />JSON 프롬프트를 자동으로 만듭니다.",
       url: toolUrls.promptGenerator,
       color: "text-cyan-400",
       hoverColor: "hover:border-cyan-500",
